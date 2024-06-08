@@ -2,10 +2,10 @@
 alert = false;
 
 // distance to start chasing the player
-alert_dis = 100;
+alert_dis = 75;
 
 // set stop distance
-attack_dis = 20;
+attack_dis = 5;
 
 // speed to chase the player
 move_speed = 1;
