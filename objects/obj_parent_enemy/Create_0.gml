@@ -1,3 +1,6 @@
+
+event_inherited();
+
 // chase player if found
 alert = false;
 
