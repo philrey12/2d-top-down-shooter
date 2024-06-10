@@ -1,7 +1,9 @@
 
 event_inherited();
 
-walk_speed = 1.5;
+walk_speed = 2;
+hp_max = 10;
+hp = hp_max;
 
 // bow
 aim_dir = 0;

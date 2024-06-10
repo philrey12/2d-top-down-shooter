@@ -2,6 +2,9 @@
 // Inherit the parent event
 event_inherited();
 
+// set overlap push
+push = 0.5;
+
 // assign sprites
 e_idle = spr_enemy_idle;
 e_walk = spr_enemy_walk;

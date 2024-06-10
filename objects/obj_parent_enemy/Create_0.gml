@@ -1,6 +1,9 @@
 
 event_inherited();
 
+hp_max = 15;
+hp = hp_max;
+
 // chase player if found
 alert = false;
 
