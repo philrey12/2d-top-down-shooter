@@ -9,6 +9,18 @@ function calc_entity_movement() {
 	check_if_stopped();
 }
 
+function calc_knockback_movement() {
+	// moves enemy and apply drag
+	x += hor_speed;
+	y += ver_speed;
+	hor_speed *= 0.91;
+	ver_speed *= 0.91;
+	
+	check_if_stopped();
+	
+	if knockback_time <= 0 state = STATES.IDLE;
+}
+
 function check_facing() {
 	// check which way we are moving and set facing
 	if knockback_time <= 0 {
@@ -59,6 +71,9 @@ function enemy_anim() {
 			break;
 		case STATES.ATTACK:
 			sprite_index = e_attack;
+			break;
+		case STATES.KNOCKBACK:
+			show_hurt();
 			break;
 		case STATES.DEAD:
 			sprite_index = e_dead;

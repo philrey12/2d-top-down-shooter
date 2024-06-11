@@ -1,0 +1,8 @@
+
+enum STATES {
+	IDLE,
+	MOVE,
+	ATTACK,
+	DEAD,
+	KNOCKBACK
+}

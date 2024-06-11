@@ -13,6 +13,10 @@ switch (state) {
 		if path_index == -1 state = STATES.IDLE;
 		enemy_anim();
 		break;
+	case STATES.KNOCKBACK:
+		calc_knockback_movement();
+		enemy_anim();
+		break;
 	case STATES.ATTACK:
 		calc_entity_movement();
 		enemy_anim();

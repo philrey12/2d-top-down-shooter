@@ -7,13 +7,20 @@ function damage_entity(_target_id, _source_id, _damage, _kbtime) {
 		path_end();
 		
 		// set knockback distance
-		if _dead var _dis = 4 else _dis = 1;
+		if _dead var _dis = 5 else _dis = 3;
+		
 		var _dir = point_direction(_source_id.x, _source_id.y, x, y);
+		
 		hor_speed += lengthdir_x(_dis, _dir);
 		ver_speed += lengthdir_y(_dis, _dir);
+		
 		calc_path_delay = _kbtime;
 		alert = true;
 		knockback_time = _kbtime
+		
+		if !_dead state = STATES.KNOCKBACK;
+		
+		image_index = 0;
 		return _dead;
 	}
 }
@@ -37,6 +44,7 @@ function is_dead() {
 			}
 			return true;
 		}
+	} else {
 		return true;
 	}
 }

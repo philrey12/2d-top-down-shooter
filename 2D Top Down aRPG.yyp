@@ -41,6 +41,7 @@
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"enemy_processes","path":"scripts/enemy_processes/enemy_processes.yy",},},
     {"id":{"name":"entity_processes","path":"scripts/entity_processes/entity_processes.yy",},},
+    {"id":{"name":"macros_enums","path":"scripts/macros_enums/macros_enums.yy",},},
     {"id":{"name":"player_processes","path":"scripts/player_processes/player_processes.yy",},},
     {"id":{"name":"spr_arrow_explode","path":"sprites/spr_arrow_explode/spr_arrow_explode.yy",},},
     {"id":{"name":"spr_arrow","path":"sprites/spr_arrow/spr_arrow.yy",},},
