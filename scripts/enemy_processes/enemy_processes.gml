@@ -30,6 +30,9 @@ function check_facing() {
 }
 
 function check_for_player() {
+	// check player if dead
+	if obj_player.state == STATES.DEAD exit;
+	
 	// check if player is close enough to start chasing them
 	var _dis = distance_to_object(obj_player);
 	
@@ -55,6 +58,7 @@ function check_for_player() {
 		// if close enough to attack player
 		if _dis <= attack_dis {
 			path_end();
+			state = STATES.ATTACK;
 		}
 	}
 }
@@ -86,6 +90,27 @@ function enemy_anim() {
 	// update previous position
 	xpos = x;
 	ypos = y;
+}
+
+function perform_attack() {
+	// attack player when at the correct animation frame
+	if image_index >= attack_frame and can_attack {
+		can_attack = false;
+		alarm[0] = attack_cooldown;
+		
+		// get direction
+		var _dir = point_direction(x, y, obj_player.x, obj_player.y);
+		
+		// get position
+		var _xx = x + lengthdir_x(attack_dis, _dir);
+		var _yy = y + lengthdir_y(attack_dis, _dir);
+		
+		// create hitbox
+		var _inst = instance_create_layer(_xx, _yy, "Instances", obj_enemy_hitbox);
+		_inst.owner_id = id;
+		_inst.damage = damage;
+		_inst.knockback_time = knockback_time;
+	}
 }
 
 function show_hurt() {

@@ -2,6 +2,8 @@
 function damage_entity(_target_id, _source_id, _damage, _kbtime) {
 	// damage target and return dead status
 	with(_target_id) {
+		if alarm[HURT] > 0 or state == STATES.DEAD exit;
+		
 		hp -= _damage;
 		var _dead = is_dead();
 		path_end();
@@ -17,6 +19,7 @@ function damage_entity(_target_id, _source_id, _damage, _kbtime) {
 		calc_path_delay = _kbtime;
 		alert = true;
 		knockback_time = _kbtime
+		alarm[HURT] = hurt_time;
 		
 		if !_dead state = STATES.KNOCKBACK;
 		
@@ -39,6 +42,7 @@ function is_dead() {
 					// play sound
 					break;
 				case obj_player:
+					if instance_exists(my_bow) instance_destroy(my_bow);
 					// play sound
 					break;
 			}
@@ -50,10 +54,8 @@ function is_dead() {
 }
 
 function check_if_stopped() {
-	//if abs(hor_speed) < 0.1 hor_speed = 0;
-	//if abs(ver_speed) < 0.1 ver_speed = 0;
-	if abs(hspeed) < 0.1 hor_speed = 0;
-	if abs(vspeed) < 0.1 ver_speed = 0;
+	if abs(hor_speed) < 0.1 hor_speed = 0;
+	if abs(ver_speed) < 0.1 ver_speed = 0;
 }
 
 function show_healthbar() {

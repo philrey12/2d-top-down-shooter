@@ -36,6 +36,28 @@ function calc_movement() {
 		y += vmove;
 	}
 	
+	// apply knockback
+	x += hor_speed;
+	y += ver_speed;
+	
+	// apply drag to knockback
+	var _drag = 0;
+	
+	switch(state) {
+		default:
+			_drag = 0.15;
+			break;
+		case STATES.DEAD:
+			_drag = 0.08;
+			break;
+	}
+	
+	hor_speed = lerp(hor_speed, 0, _drag);
+	ver_speed = lerp(ver_speed, 0, _drag);
+}
+
+function aim_bow() {
+	// get and set the bow aim
 	aim_dir = point_direction(x, y, mouse_x, mouse_y);
 	my_bow.image_angle = aim_dir;
 }
@@ -49,9 +71,13 @@ function collision() {
 	x = xprevious;
 	y = yprevious;
 	
-	// get distance we want to move
-	var _disx = abs(_tx - x);
-	var _disy = abs(_ty - y);
+	// get max distance we want to move
+	var _disx = ceil(abs(_tx - x));
+	var _disy = ceil(abs(_ty - y));
+	
+	// use integers when colliding in the x/y axis
+	if place_meeting(x + _disx * sign(_tx - x), y, obj_solid) x = round(x);
+	if place_meeting(x, y + _disx * sign(_ty - y), obj_solid) y = round(y);
 	
 	// move as far as in x and y before hitting the solid
 	repeat(_disx) {
@@ -63,17 +89,24 @@ function collision() {
 }
 
 function anim() {
-	if hmove != 0 or vmove != 0 {
-		sprite_index = spr_player_walk;
-	} else {
-		sprite_index = spr_player_idle;
+	switch(state) {
+		default:
+			if hmove != 0 or vmove != 0 {
+				sprite_index = spr_player_walk;
+			} else {
+				sprite_index = spr_player_idle;
+			}
+			break;
+		case STATES.DEAD:
+			sprite_index = spr_player_dead;
+			break;
 	}
 }
 
 function check_fire() {
 	if mouse_check_button(mb_left) {
-		if can_fire {
-			can_fire = false;
+		if can_attack {
+			can_attack = false;
 			alarm[0] = fire_rate;
 			
 			var _dir = point_direction(x, y, mouse_x, mouse_y);

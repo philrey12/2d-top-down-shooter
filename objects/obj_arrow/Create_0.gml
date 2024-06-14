@@ -2,7 +2,7 @@
 damage = 5;
 range = 240;
 owner_id = noone;
-knockback_time = 1;
+knockback_time = 10;
 
 function arrow_die() {
 	// when arrow is destroyed
