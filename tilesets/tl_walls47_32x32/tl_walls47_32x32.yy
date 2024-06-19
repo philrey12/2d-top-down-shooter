@@ -27,8 +27,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"s_walls47_32x32",
-    "path":"sprites/s_walls47_32x32/s_walls47_32x32.yy",
+    "name":"spr_walls47_32x32",
+    "path":"sprites/spr_walls47_32x32/spr_walls47_32x32.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{
