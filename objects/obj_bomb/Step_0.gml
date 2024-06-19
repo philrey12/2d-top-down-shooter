@@ -1,3 +1,3 @@
 
 calc_entity_movement();
-depth = -y;
+depth = -bbox_bottom;

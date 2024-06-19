@@ -88,6 +88,12 @@ function collision() {
 	}
 }
 
+function collision_bounce() {
+	collision();
+	if place_meeting(x + sign(hor_speed), y, obj_solid) hor_speed = -hor_speed;
+	if place_meeting(x, y + sign(ver_speed), obj_solid) ver_speed = -ver_speed;
+}
+
 function anim() {
 	switch(state) {
 		default:
@@ -101,6 +107,7 @@ function anim() {
 			sprite_index = spr_player_dead;
 			break;
 	}
+	depth = -bbox_bottom;
 }
 
 function check_fire() {
@@ -111,13 +118,30 @@ function check_fire() {
 			
 			var _dir = point_direction(x, y, mouse_x, mouse_y);
 			bow_dis = 5;
-			
 			var _inst = instance_create_layer(x, y, "Arrow", obj_arrow);
+			
 			with(_inst) {
 				speed = other.arrow_speed;
 				direction = _dir;
 				image_angle = _dir;
 				owner_id = other;
+			}
+		}
+	}
+}
+
+function check_bomb() {
+	if mouse_check_button_pressed(mb_right) {
+		if can_throw_bomb {
+			can_throw_bomb = false;
+			alarm[2] = bomb_cooldown;
+			
+			var _dir = point_direction(x, y, mouse_x, mouse_y);
+			var _inst = instance_create_layer(x, y, "Instances", obj_bomb);
+			
+			with(_inst) {
+				hor_speed = lengthdir_x(other.bomb_power, _dir);
+				ver_speed = lengthdir_y(other.bomb_power, _dir);
 			}
 		}
 	}

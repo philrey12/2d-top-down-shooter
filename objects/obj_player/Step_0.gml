@@ -6,6 +6,7 @@ switch (state) {
 		calc_movement();
 		aim_bow();
 		check_fire();
+		check_bomb();
 		anim();
 		break;
 	case STATES.KNOCKBACK:
