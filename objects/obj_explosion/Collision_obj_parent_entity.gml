@@ -1,4 +1,5 @@
 
+// apply damage and knockback
 var _dir = point_direction(x, y, other.x, other.y);
 var _force = force;
 
