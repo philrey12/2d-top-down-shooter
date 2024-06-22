@@ -41,6 +41,7 @@
     {"id":{"name":"obj_parent_enemy","path":"objects/obj_parent_enemy/obj_parent_enemy.yy",},},
     {"id":{"name":"obj_parent_entity","path":"objects/obj_parent_entity/obj_parent_entity.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
+    {"id":{"name":"obj_screen_shake","path":"objects/obj_screen_shake/obj_screen_shake.yy",},},
     {"id":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"enemy_processes","path":"scripts/enemy_processes/enemy_processes.yy",},},
