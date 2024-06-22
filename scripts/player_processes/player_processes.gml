@@ -107,6 +107,7 @@ function anim() {
 			sprite_index = spr_player_dead;
 			break;
 	}
+	// set depth
 	depth = -bbox_bottom;
 }
 
