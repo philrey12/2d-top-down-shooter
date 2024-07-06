@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"entity_processes",
   "isCompatibility":false,
   "isDnD":false,
