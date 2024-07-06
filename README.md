@@ -1,2 +1,2 @@
-# 2d-topdown-arpg
-A 2D Top Down aRPG (WIP)
+# 2d-top-down-shooter
+A 2D Top Down Shooter (WIP)
